@@ -1,0 +1,43 @@
+-- This is the first query:
+
+SELECT DISTINCT year from population_years;
+
+-- Add your additional queries below:
+
+-- Largest population size for Gabon
+SELECT MAX(population)
+FROM population_years
+WHERE country = 'Gabon';
+
+--10 lowest population countries in 2005
+SELECT country, population
+FROM population_years
+WHERE year = 2005
+ORDER BY population
+LIMIT 10;
+
+-- Distinct countries with pop over 100M in 2020
+SELECT DISTINCT country AS 'Country > 100M',
+    population
+FROM population_years
+WHERE population > 100
+    AND year = 2010;
+
+-- # of Countries with "Islands" in name
+SELECT COUNT(*) AS "'Islands' Countries"
+FROM population_years
+WHERE country LIKE "%Islands%";
+
+-- Difference in pop in Indonesia 2000-2010
+SELECT population
+FROM population_years
+WHERE country = 'Indonesia' 
+  AND year = 2010;
+-- Population in 2010 is 242,968,340
+SELECT population
+FROM population_years
+WHERE country = 'Indonesia' 
+  AND year = 2000;
+-- 2000 population is 214,676,610
+SELECT (242968340 - 214676610) AS 'Difference in Population'
+
